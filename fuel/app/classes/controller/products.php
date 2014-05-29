@@ -3,9 +3,6 @@
 class Controller_Products extends Controller_Rest
 {
     protected $format = "json";
-    protected $drupalViews = "http://localhost/knaufamt.com.au/api/views";
-    //protected $drupalViews = "http://knaufamt.com.au/staging/api/views";
-    protected $productsResource = "/content";
 
     public function action_index() {
         $listType = Input::get("type");
@@ -17,7 +14,7 @@ class Controller_Products extends Controller_Rest
             return;
         }
 
-        $fullUrl = $this->drupalViews;
+        $fullUrl = Config::get('drupal_views');
         $fullUrl .= ($listType == 1) ? "/order_form?" : "/marketing_pages?";
         $fullUrl .= "product_id=$productId&last_update=$timestamp";
 

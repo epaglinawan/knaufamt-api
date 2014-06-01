@@ -1,6 +1,6 @@
 <?php
 
-class Controller_Selectors extends Controller_Rest
+class Controller_Estimation extends Controller_Rest
 {
     protected $format = "json";
 
@@ -8,7 +8,7 @@ class Controller_Selectors extends Controller_Rest
         $timestamp = Input::get("timestamp");
 
         $fullUrl = Config::get('drupal_views');
-        $fullUrl .= "/system_selectors?timestamp=$timestamp";
+        $fullUrl .= "/estimation_wizard?timestamp=$timestamp";
 
 	$curl = Request::forge($fullUrl, "curl");
         $curl->execute();

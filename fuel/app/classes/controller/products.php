@@ -6,7 +6,7 @@ class Controller_Products extends Controller_Rest
 
     public function action_index() {
         $listType = Input::get("type");
-        $productId = Input::get("productId");
+        $productId = Input::get("product_id");
         $timestamp = Input::get("timestamp");
 
         if ($listType != 1 && $listType != 2) {
@@ -20,9 +20,9 @@ class Controller_Products extends Controller_Rest
 
 	$curl = Request::forge($fullUrl, "curl");
         $curl->execute();
-        $products = $curl->response();
+        $data = $curl->response();
 
-        $this->response($products);
+        $this->response($data);
     }
 }
 

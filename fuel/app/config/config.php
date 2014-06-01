@@ -29,10 +29,23 @@ return array(
 	'drupal_views' => 'http://localhost/knaufamt.com.au/api/views',
         //'drupal_views' => 'http://knaufamt.com.au/staging/api/views',
         'endpoints' => array(
-		'http://www.knaufplasterboard.com.au',
-		'http://knaufplasterboard.com.nz',
-		'http://plastamasta.com.au'
+	    'order_form' => '',
+	    'knauf_au' => 'http://www.knaufplasterboard.com.au',
+	    'knauf_nz' => 'http://knaufplasterboard.com.nz',
+	    'plastamasta_au' => 'http://plastamasta.com.au',
+	    'plastalink_nz' => 'http://plastalink.co.nz'
 	),
+	
+	'trigger_endpoints' => array(
+	    'products' => array('order_form', 'knauf_au', 'knauf_nz'),
+	    'selectors' => array('knauf_au', 'knauf_nz'),
+	    'documents' => array('knauf_au', 'knauf_nz'),
+	    'store_locations' => array('knauf_au', 'knauf_nz', 'plastamasta_au'),
+	    'media' => array('knauf_au', 'knauf_nz'),
+	    'estimation' => array(),
+	    'plastamasta' => array('plastamasta_au', 'plastalink_nz')
+	),
+
 
 	/**
 	 * url_suffix - Any suffix that needs to be added to

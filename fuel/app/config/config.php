@@ -26,8 +26,8 @@ return array(
 	 */
 	// 'base_url'  => null,
 
-	'drupal_views' => 'http://localhost/knaufamt.com.au/api/views',
-        //'drupal_views' => 'http://knaufamt.com.au/staging/api/views',
+	//'drupal_views' => 'http://localhost/knaufamt.com.au/api/views',
+        'drupal_views' => 'http://knaufamt.com.au/staging/api/views',
         'endpoints' => array(
 	    'order_form' => '',
 	    'knauf_au' => 'http://www.knaufplasterboard.com.au',

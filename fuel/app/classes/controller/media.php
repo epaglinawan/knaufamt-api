@@ -14,7 +14,7 @@ class Controller_Media extends Controller_Rest
         $curl->execute();
         $data = $curl->response();
 
-        $this->response($data);
+        $this->response($data->body());
     }
 }
 

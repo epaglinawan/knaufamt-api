@@ -8,7 +8,14 @@ class Controller_Products extends Controller_Rest
         $listType = Input::get("type");
         $productId = Input::get("product_id");
         $timestamp = Input::get("timestamp");
-
+	
+	try {
+	    $date = new DateTime($timestamp);
+	} catch (Exception $e) {
+	    $this->response(array("error" => "Incorrect date format, it should be of form 'YYYY-MM-DD'."));
+	    return;
+	}
+	
         if ($listType != 1 && $listType != 2) {
             $this->response(array("error" => "Parameter <b>type=$listType</b> not supported."));
             return;
@@ -22,7 +29,8 @@ class Controller_Products extends Controller_Rest
         $curl->execute();
         $data = $curl->response();
 
-        $this->response($data);
+        $this->response($data->body());
+	
     }
 }
 

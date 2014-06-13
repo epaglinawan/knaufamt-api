@@ -8,6 +8,13 @@ class Controller_Documents extends Controller_Rest
         $timestamp = Input::get("timestamp");
 	$documentId = Input::get("document_id");
 
+	try {
+	    $date = new DateTime($timestamp);
+	} catch (Exception $e) {
+	    $this->response(array("error" => "Incorrect date format, it should be of form 'YYYY-MM-DD'."));
+	    return;
+	}
+
         $fullUrl = Config::get('drupal_views');
         $fullUrl .= "/documents?timestamp=$timestamp&document_id=$documentId";
 
@@ -15,7 +22,7 @@ class Controller_Documents extends Controller_Rest
         $curl->execute();
         $data = $curl->response();
 
-        $this->response($data);
+        $this->response($data->body());
     }
 }
 
